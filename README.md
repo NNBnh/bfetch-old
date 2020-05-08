@@ -10,10 +10,12 @@
 It displays any information about any things you want.
 
 > "This is the most **flexible** fetch ever existed." <br>
-> \- IGN
+> *\- Someone*
 
 > "Bfetch is so **minimum** that it min itself out of existence." <br>
-> \- Also IGN
+> *\- Also someone*
+
+###### **NOTE:** Bfetch is still in beta.
 
 ### Story
 I often open terminal in a busy monitor. For a guy who put fetch tool at terminal startup, the fetch doesn't have much space to display make the fetch look somewhat odd... So i try other fetch tool:
@@ -32,6 +34,18 @@ All cool but i still doesn't satisfy with any of it :(. So i start with [Ufetch]
   * Bfetch can display anything you want, however you want.
   * You can put custom ascii-art with `.bfetch` file format.
   * You can put info-line that show custom command output.
+* Have two layouts:
+
+```
+┌──────────┬──────────┐
+│ Layout 1 │ Layout 2 │
+├──────────┼──────────┤
+│    ▓▓    │ ▐▓▌info  │
+│   info   │    info  │
+│   info   │   ▀▀▀▀   │
+│  ▀▀▀▀▀▀  │          │
+└──────────┴──────────┘
+```
 
 ## Contents
 * [About](#about)
@@ -92,7 +106,8 @@ Hit enter and take a look:
 │ ~ >                              │
 └──────────────────────────────────┘
 ```
-###### **NOTE:** This ascii art is taking from [Ufetch](https://gitlab.com/jschx/ufetch).
+
+###### **NOTE:** This ascii-art is taking from [Ufetch](https://gitlab.com/jschx/ufetch).
 
 ### Configuration
 Bfetch is configured through environment variables.
@@ -144,13 +159,81 @@ export BF_info10="$(tput bold)$(tput setaf 6)Location:  $(tput sgr0)$(curl --sil
 export BF_info11="$(tput bold)$(tput setaf 6)IP:        $(tput sgr0)$(curl --silent ifconfig.me)"
 export BF_info12="$(tput bold)$(tput setaf 6)CORONA:    $(tput sgr0)$(curl --silent https://corona-stats.online/ | grep "World" | grep "," | sed -e 's/│/|/g' -e 's/ //g' | cut -f 8 -d "|")"
 ```
+
 ###### More info will come through plug-ins.
+
+#### Picture
+##### Ascii
+Bfetch use `.bfetch` format as an ascii-art file. <br>
+This is how `.bfetch` work:
+
+```
+┌──────┬──────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Line │ archlinux.bfetch                                                                                     │
+├──────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│    1 │ 12 7 14   # pic-start; pic-height; pic-width                                                         │
+│    2 │ 21 19 37  # pic-big-start; pic-big-height; pic-big-width                                             │
+│    3 │ 6 . 4 2   # label-color; text-color; 1-color; 2-color                                                │
+│    4 │                                                                                                      │
+│    5 │ ########[ Description ]########                                                                      │
+│    6 │ Description:  This ascii-art is port from Neofetch and Ufetch:                                       │
+│    7 │                 ├─ Small picture:  https://gitlab.com/jschx/ufetch/-/blob/master/ufetch-arch#L66     │
+│    8 │                 └─ Big picture:    https://github.com/dylanaraps/neofetch/blob/master/neofetch#L5723 │
+│    9 │ Author:       Dylan                                                                                  │
+│   10 │                 └─ https://github.com/dylanaraps                                                     │
+│   11 │               Jschx                                                                                  │
+│   12 │                 └─ https://gitlab.com/jschx                                                          │
+│   13 │ Port by:      Sakashi_NNB                                                                            │
+│   14 │                 └─ https://github.com/SakashiNNB                                                     │
+│   15 │ License:      GPLv3                                                                                  │
+│   16 │                                                                                                      │
+│   17 │                                                                                                      │
+│   18 │ * Note: This part will not be print out.                                                             │
+│   19 │                                                                                                      │
+│   20 │ #######[ Small picture ]#######                                                                      │
+│   21 │ $(tput setaf 6)      /\\      $(tput sgr0)                                                           │
+│   22 │ $(tput setaf 6)     /  \\     $(tput sgr0)                                                           │
+│   23 │ $(tput setaf 6)    /\\   \\    $(tput sgr0)                                                          │
+│   24 │ $(tput setaf 6)   /  __  \\   $(tput sgr0)                                                           │
+│   25 │ $(tput setaf 6)  /  (  )  \\  $(tput sgr0)                                                           │
+│   26 │ $(tput setaf 6) / __|  |__\\\\ $(tput sgr0)                                                          │
+│   27 │ $(tput setaf 6)/.\`        \`.\\$(tput sgr0)                                                         │
+│   28 │                                                                                                      │
+│   29 │ ########[ Big picture ]########                                                                      │
+│   30 │ $(tput setaf 6)                  -`                 $(tput sgr0)                                     │
+│   31 │ $(tput setaf 6)                 .o+`                $(tput sgr0)                                     │
+│   32 │ $(tput setaf 6)                `ooo/                $(tput sgr0)                                     │
+│   33 │ $(tput setaf 6)               `+oooo:               $(tput sgr0)                                     │
+│   34 │ $(tput setaf 6)              `+oooooo:              $(tput sgr0)                                     │
+│   35 │ $(tput setaf 6)              -+oooooo+:             $(tput sgr0)                                     │
+│   36 │ $(tput setaf 6)            `/:-:++oooo+:            $(tput sgr0)                                     │
+│   37 │ $(tput setaf 6)           `/++++/+++++++:           $(tput sgr0)                                     │
+│   38 │ $(tput setaf 6)          `/++++++++++++++:          $(tput sgr0)                                     │
+│   39 │ $(tput setaf 6)         `/+++ooooooooooooo/`        $(tput sgr0)                                     │
+│   40 │ $(tput setaf 6)        ./ooosssso++osssssso+`       $(tput sgr0)                                     │
+│   41 │ $(tput setaf 6)       .oossssso-````/ossssss+`      $(tput sgr0)                                     │
+│   42 │ $(tput setaf 6)      -osssssso.      :ssssssso.     $(tput sgr0)                                     │
+│   43 │ $(tput setaf 6)     :osssssss/        osssso+++.    $(tput sgr0)                                     │
+│   44 │ $(tput setaf 6)    /ossssssss/        +ssssooo/-    $(tput sgr0)                                     │
+│   45 │ $(tput setaf 6)  `/ossssso+/:-        -:/+osssso+-  $(tput sgr0)                                     │
+│   46 │ $(tput setaf 6) `+sso+:-`                 `.-/+oso: $(tput sgr0)                                     │
+│   47 │ $(tput setaf 6)`++:.                           `-/+/$(tput sgr0)                                     │
+│   48 │ $(tput setaf 6).`                                 `/$(tput sgr0)                                     │
+│   49 │                                                                                                      │
+└──────┴──────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+##### Image
+\#TODO
 
 ## TODO/FIXME
 * [ ] Option to align layout 1 to the left.
 * [ ] Have better default infos.
-* [ ] `.bfetch` Doc.
+* [ ] Port more ascii-arts.
+* [ ] Suport big picture for ascii.
+* [ ] Suport main color from `.bfetch` file.
 * [ ] Add Plug-ins.
+* [ ] Support image.
 
 ## Credit
 Special thanks to:
@@ -158,4 +241,5 @@ Special thanks to:
 * [**Pfetch**](https://github.com/dylanaraps/pfetch) also by [Dylan](https://github.com/dylanaraps)
 * [**Ufetch**](https://gitlab.com/jschx/ufetch) by [Jschx](https://gitlab.com/jschx)
 * [**Writing a TUI in BASH**](https://github.com/dylanaraps/writing-a-tui-in-bash) also by [Dylan](https://github.com/dylanaraps)
+
 ###### **NOTE:** Bfetch shares zero code with Neofetch, Pfetch or Ufetch
