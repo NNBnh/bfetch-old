@@ -1,6 +1,10 @@
 <h1 align="center"; style="font-family:'JetBrains Mono'"><b>████:</b>&nbsp;&nbsp;<i>Bfetch</i></h1>
 <p align="center"; style="font-family:'JetBrains Mono'">Fetch that <i>SuperB</i></p>
 
+<p align="center">
+    <img src="image/screenshot.png">
+</p>
+
 ## About
 **Bfetch** is a command-line system information tool written in `sh`. <br>
 It displays any information about any things you want.
@@ -91,6 +95,8 @@ Hit enter and take a look:
 ###### **NOTE:** This ascii art is taking from [Ufetch](https://gitlab.com/jschx/ufetch).
 
 ### Configuration
+Bfetch is configured through environment variables.
+
 ```sh
 # Terminal size
 export BF_prompt_height="1"  # Needed if you use custom prompt like powerlevel10k.
