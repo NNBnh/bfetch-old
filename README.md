@@ -91,6 +91,8 @@ Hit enter and take a look:
 ###### **NOTE:** This ascii art is taking from [Ufetch](https://gitlab.com/jschx/ufetch).
 
 ### Configuration
+Bfetch is configured through environment variables.
+
 ```sh
 # Terminal size
 export BF_prompt_height="1"  # Needed if you use custom prompt like powerlevel10k.
