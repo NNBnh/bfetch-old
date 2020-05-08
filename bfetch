@@ -1,0 +1,200 @@
+#!/bin/sh
+
+#        ____
+#       / __ )  ____   __      __
+#      / __  | / __/_ / /_____/ /
+#     / /_/ / / _/ -_) __/ __/ _ \
+#    /_____/ /_/ \__/\__/\__/_//_/
+
+# Description:  Fetch that SuperB
+# Author:       Sakashi_NNB
+#                 └─ https://github.com/SakashiNNB
+# URL:          https://github.com/SakashiNNB/bfetch
+# License:      GPLv3
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+#################################[ Values ]################################# {{{
+# Terminal size
+prompt_size="${BF_prompt_height:-"1"}"
+t_size="$(stty size | cut -f 2 -d " ")"
+t_sizey="$(( $(stty size | cut -f 1 -d " ") - $prompt_size ))"
+
+# Infos
+if [[ -z $BF_info0 ]]; then
+	export BF_info0="$(tput bold)INFO:  $(tput sgr0)Hello world!"
+	export BF_info_size="19"
+fi
+info_size="${BF_info_size:-"0"}"
+
+# Picture
+pic="${BF_pic:-""}"
+if [[ -z $BF_pic ]]; then
+	pic_sizey="0"
+else
+	pic_size="$(cat $BF_pic | head -n1 | awk '{print $3;}')"
+	pic_start="$(cat $BF_pic | head -n1 | awk '{print $1;}')"
+	pic_sizey="$(cat $BF_pic | head -n1 | awk '{print $2;}')"
+fi
+
+# Color-line
+color_size="${BF_color_size:-"4"}"
+
+# White-spaces
+hsep_size="${BF_hsep_size:-"1"}"
+vsep_size="${BF_vsep_size:-"4"}"
+
+# Layout & other
+layout="${BF_layout:-""}"
+[[ ! -z $BF_layout2 ]] && layout2="$(( $BF_layout2 + 1 ))" \
+	|| layout2="${BF_layout2:-""}"
+color_on_info="${BF_color_on_info:-"false"}"
+toosmallcmd="${BF_cmd:-"echo 'Term too small'"}"
+# }}}
+
+################################[ Functions ]############################### {{{
+function counter() {
+	local add_val="${1:-""}"
+
+	[[ ! -z $add_val ]] && counter="$add_val" \
+		|| counter="$(( $counter + 1 ))"
+}
+
+function cursor_locate() {
+	[[ -z cursor_location ]] && cursor_location="1"
+
+	local num="${1:-"1"}"
+
+	cursor_location="$(( $cursor_location + $num ))"
+}
+
+function newline() {
+	local num="${1:-"1"}"
+
+	final_print+="$(tput sgr0)\e[${num}B"
+	cursor_locate $num
+}
+
+function return_print() {
+	final_print+="$(tput sgr0)\e[$cursor_location;${obj_pad}H"
+}
+# }}}
+
+#################################[ Objects ]################################ {{{
+function print_info() {
+	local obj_pad="${1:-"$(( ( $t_size - $info_size ) / 2 ))"}"
+
+	counter 0
+	while [[ ! -z $(printf "printf \"\$BF_info"$counter"\"" | sh) ]]
+	do
+		if [[ ! $obj_pad == "y" ]]; then
+			return_print
+			final_print+="$(printf "printf \"\$BF_info"$counter"\"" | sh)$(tput sgr0)"
+			cursor_locate
+		fi
+		counter
+	done
+	[[ $obj_pad == "y" ]] && info_sizey="$counter"
+}
+
+function print_pic() {
+	local obj_pad="${1:-"$(( ( $t_size - $pic_size ) / 2 ))"}"
+
+	counter 0
+	while [[ $counter -lt $pic_sizey ]]
+	do
+		return_print
+		final_print+="$(printf "printf \"$(sed "$(( $counter + $pic_start ))q;d" "$BF_pic")\"" | sh)"
+		cursor_locate
+		counter
+	done
+}
+
+function print_color() {
+	color_space_max="${color_size:-"4"}"
+	color_space="$(( $t_size / 8 ))"
+	[[ $color_space -gt $color_space_max ]] && color_space="$color_space_max"
+	color_size="$(( $color_space * 8 ))"
+
+	local obj_pad="${1:-"$(( ( $t_size - $color_size ) / 2 ))"}"
+
+	for counter in {0..15}
+	do
+		[[ $counter == "8" ]] && cursor_locate
+		[[ $counter == "0" ]] \
+			|| [[ $counter == "8" ]] && return_print
+		final_print+="$(tput setab $counter)"
+		counter 0
+		while [[ $counter -lt $color_space ]]
+		do
+			final_print+=" "
+			counter
+		done
+	done
+}
+# }}}
+
+#################################[ Layouts ]################################ {{{
+function print_layout1() {
+	[[ ! -z $pic ]] && print_pic && newline $hsep_size
+	print_info
+	[[ ! $color_size == "0" ]] \
+		&& [[ $t_sizey -gt $(( $info_sizey + $pic_sizey + 1 )) ]] \
+		&& [[ $t_size -gt 8 ]] && newline $hsep_size && print_color
+}
+
+function print_layout2() {
+	if [[ $t_size -gt $(( $pic_size + $vsep_size + $info_size + 2 )) ]] && [[ ! -z $pic ]]; then
+		[[ ! -z $layout2 ]] && pad="$layout2" \
+			|| pad="$(( ( $t_size - ( $pic_size + $vsep_size + $info_size ) ) / 2 ))"
+		print_pic $pad
+		cursor_location="2"
+		pad_info="$(( $pad + $pic_size + $vsep_size ))"
+		print_info $pad_info
+		[[ $color_on_info = true ]] \
+			|| [[ $color_on_info = 1 ]] && layout2="$pad_info"
+	else
+		[[ ! -z $layout2 ]] && pad="$layout2"
+		print_info
+	fi
+	[[ ! $color_size == "0" ]] \
+		&& [[ $t_sizey -gt $(( $info_sizey + $hsep_size + 1 )) ]] \
+		&& [[ $t_sizey -gt $(( $pic_sizey + $hsep_size + 1 )) ]] \
+		&& [[ $t_size -gt 8 ]] && newline $hsep_size && print_color $layout2
+}
+# }}}
+
+##################################[ Print ]################################# {{{
+print_info y
+newline 2
+if [[ -z $layout ]]; then
+	if [[ $t_sizey -gt $(( $pic_sizey + $info_sizey + 2 )) ]]; then
+		print_layout1
+	else
+		print_layout2
+	fi
+else
+	print_layout$layout
+fi
+[[ $t_size -lt $info_size ]] \
+	|| [[ $t_sizey -lt $info_sizey ]] && $too_small_cmd
+
+printf "\e[2J\e[?7l$final_print\e[?7h\n"
+
+exit 0
+# }}}
+
+
+# vim: set fdm=marker :
