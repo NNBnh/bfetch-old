@@ -23,7 +23,7 @@ I often open terminal in a busy monitor. For a guy who put fetch tool at termina
 * [**Pfetch**](https://github.com/dylanaraps/pfetch): too little.
 * [**Ufetch**](https://gitlab.com/jschx/ufetch): too weak.
 
-All cool but i still doesn't satisfy with any of it :(. So i start with [Ufetch](https://gitlab.com/jschx/ufetch) and looking around [Pfetch](https://github.com/dylanaraps/pfetch) source code... After 2 week i finally finished this fetch, this super flexible fetch.
+All cool but i still doesn't satisfy with any of it :disappointed:. So i start with [Ufetch](https://gitlab.com/jschx/ufetch) and looking around [Pfetch](https://github.com/dylanaraps/pfetch) source code... After 2 week i finally finished this fetch, this super flexible fetch.
 
 ### Features
 * Super **minimum** with only 200 line of `sh`.
@@ -80,7 +80,7 @@ Link the file:
 ln -sf "$HOME/.local/share/bfetch/bfetch" "$HOME/.local/bin/bfetch"
 ```
 
-Done :).
+Done :thumbsup:.
 
 ## Usage
 Type the command:
