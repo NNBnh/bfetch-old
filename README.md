@@ -61,7 +61,7 @@ All cool but i still doesn't satisfy with any of it :disappointed:. So i start w
     * [Picture](#picture)
       * [Ascii](#ascii)
       * [Image](#image)
-* [TODO/FIXME](#todo%2Ffixme)
+* [TODO/FIXME](#todofixme)
 * [Q&A](#qa)
 * [Credit](#credit)
 
