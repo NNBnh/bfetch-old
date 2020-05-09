@@ -61,8 +61,8 @@ All cool but i still doesn't satisfy with any of it :(. So i start with [Ufetch]
     * [Picture](#picture)
       * [Ascii](#ascii)
       * [Image](#image)
-* [Q&A](#qa)
 * [TODO/FIXME](#todo%2Ffixme)
+* [Q&A](#qa)
 * [Credit](#credit)
 
 ## Setup
