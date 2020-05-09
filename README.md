@@ -23,28 +23,62 @@ I often open terminal in a busy monitor. For a guy who put fetch tool at termina
 * [**Pfetch**](https://github.com/dylanaraps/pfetch): too little.
 * [**Ufetch**](https://gitlab.com/jschx/ufetch): too weak.
 
-All cool but i still doesn't satisfy with any of it :(. So i start with [Ufetch](https://gitlab.com/jschx/ufetch) and looking around [Pfetch](https://github.com/dylanaraps/pfetch) source code... After 2 week i finally finished this fetch, this super flexible fetch.
+All cool but i still doesn't satisfy with any of it :disappointed:. So i start with Ufetch and looking around Pfetch source code... After 2 week i finally finished this fetch, this super flexible fetch.
 
 ### Features
-* Super **minimum** with only 200 line of `sh`.
-* Super **flexible**:
+* Super **minimum** with only [**200** line of `sh`](bfetch).
+* Super [**flexible**]():
   * **Align/shift** contents based on terminal size.
   * **Hide** picture and color-line if terminal is too small.
-* Super **Customizable**:
-  * Bfetch can display anything you want, however you want.
-  * You can put custom ascii-art with `.bfetch` file format.
-  * You can put info-line that show custom command output.
-* Have two layouts:
+* Super [**Customizable**](#configuration):
+  * Bfetch can display **anything** you want, **however** you want.
+  * You can put info-line that show [**custom command output**](#advanced-infos).
+  * You can put custom **ascii-art** with [`.bfetch`](#ascii) file format.
+* Have **two layouts**:
+
+<!--```-->
+<!--┌──────────┬──────────┐-->
+<!--│ Layout 1 │ Layout 2 │-->
+<!--├──────────┼──────────┤-->
+<!--│    ▓▓    │ ▐▓▌info  │-->
+<!--│   info   │    info  │-->
+<!--│   info   │    ▀▀▀   │-->
+<!--│   ▀▀▀▀   │          │-->
+<!--└──────────┴──────────┘-->
+<!--```-->
 
 ```
-┌──────────┬──────────┐
-│ Layout 1 │ Layout 2 │
-├──────────┼──────────┤
-│    ▓▓    │ ▐▓▌info  │
-│   info   │    info  │
-│   info   │   ▀▀▀▀   │
-│  ▀▀▀▀▀▀  │          │
-└──────────┴──────────┘
+┌────────────────────────────────────────┐
+│                    /\                  │
+│                   /  \                 │
+│                  /\   \                │
+│                 /  __  \               │
+│                /  (  )  \              │
+│               / __|  |__\\             │
+│              /.`        `.\            │
+│                                        │
+│ LAYOUT:       (1) Paper                │
+│                                        │
+│ DESCRIPTION:  This layout aims to look │
+│               like a document title.   │
+│                                        │
+│    ░░░░▓▓▓▓▒▒▒▒▓▓▓▓▒▒▒▒▓▓▓▓▒▒▒▒████    │
+│        ▒▒▒▒░░░░▒▒▒▒░░░░▒▒▒▒░░░░▓▓▓▓    │
+│ ~ >                                    │
+└────────────────────────────────────────┘
+```
+
+```
+┌──────────────────────────────────────────────────────────┐
+│       /\          LAYOUT:       (2) Classic              │
+│      /  \                                                │
+│     /\   \        DESCRIPTION:  This layout emulate      │
+│    /  __  \                     the look of other fetch. │
+│   /  (  )  \                                             │
+│  / __|  |__\\     ░░░▓▓▓▒▒▒▓▓▓▒▒▒▓▓▓▒▒▒███               │
+│ /.`        `.\       ▒▒▒░░░▒▒▒░░░▒▒▒░░░▓▓▓               │
+│ ~ >                                                      │
+└──────────────────────────────────────────────────────────┘
 ```
 
 ## Contents
@@ -80,7 +114,7 @@ Link the file:
 ln -sf "$HOME/.local/share/bfetch/bfetch" "$HOME/.local/bin/bfetch"
 ```
 
-Done :).
+Done :thumbsup:.
 
 ## Usage
 Type the command:
