@@ -1,5 +1,5 @@
-<h1 align="center"; style="font-family:'JetBrains Mono'"><b>████:</b>&nbsp;&nbsp;<i>Bfetch</i></h1>
-<p align="center"; style="font-family:'JetBrains Mono'">Fetch that <i>SuperB</i></p>
+<h1 align="center"><b>████:</b>&nbsp;&nbsp;<i>Bfetch</i></h1>
+<p align="center">Fetch that <i>SuperB</i></p>
 
 <p align="center">
     <img src="image/screenshot.png">
@@ -58,6 +58,10 @@ All cool but i still doesn't satisfy with any of it :(. So i start with [Ufetch]
 * [Usage](#usage)
   * [Configuration](#configuration)
     * [Advanced Infos](#advanced-infos)
+    * [Picture](#picture)
+      * [Ascii](#ascii)
+      * [Image](#image)
+* [Q&A](#q&a)
 * [TODO/FIXME](#todo%2Ffixme)
 * [Credit](#credit)
 
@@ -234,6 +238,9 @@ This is how `.bfetch` work:
 * [ ] Suport main color from `.bfetch` file.
 * [ ] Add Plug-ins.
 * [ ] Support image.
+
+## Q&A
+\#TODO
 
 ## Credit
 Special thanks to:
