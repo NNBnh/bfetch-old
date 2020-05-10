@@ -23,7 +23,11 @@ I often open terminal in a busy monitor. For a guy who put fetch tool at termina
 * [**Pfetch**](https://github.com/dylanaraps/pfetch): too little.
 * [**Ufetch**](https://gitlab.com/jschx/ufetch): too weak.
 
+<<<<<<< HEAD
 All cool but i still doesn't satisfy with any of it :disappointed:. So i start with Ufetch and looking around Pfetch source code... After 2 week i finally finished this fetch, this super flexible fetch.
+=======
+All cool but i still doesn't satisfy with any of it :disappointed:. So i start with [Ufetch](https://gitlab.com/jschx/ufetch) and looking around [Pfetch](https://github.com/dylanaraps/pfetch) source code... After 2 week i finally finished this fetch, this super flexible fetch.
+>>>>>>> c1fb557cd4e81a1ed86629cc019a69ff4fe1bf30
 
 ### Features
 * Super **minimum** with only [**200** line of `sh`](bfetch).
@@ -95,7 +99,7 @@ All cool but i still doesn't satisfy with any of it :disappointed:. So i start w
     * [Picture](#picture)
       * [Ascii](#ascii)
       * [Image](#image)
-* [TODO/FIXME](#todo%2Ffixme)
+* [TODO/FIXME](#todofixme)
 * [Q&A](#qa)
 * [Credit](#credit)
 
