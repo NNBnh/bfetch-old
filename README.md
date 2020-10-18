@@ -1,3 +1,15 @@
+> ---
+>
+> # !!! WARNING !!!
+>
+> ## This project has been abandoned...
+>
+> ## I am planning to create an *alternative* tool.
+>
+> ###### HINT: Follow me on [Github](https://github.com/NNBnh) so you know when it comes out >,<
+>
+> ---
+
 <h1 align="center"><b>████:</b>&nbsp;&nbsp;<i>Bfetch</i></h1>
 <p align="center">Fetch that <i>SuperB</i></p>
 
