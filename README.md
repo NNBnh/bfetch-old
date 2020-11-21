@@ -4,13 +4,7 @@
 >
 > ## This project has been abandoned...
 >
-> I am planning to create an alternative tool that do `bfetch` flexible output that do more than fetch:
->
-> > - Super [**flexible**]():
-> >   - **Align/shift** contents based on terminal size.
-> >   - **Hide** picture and color-line if terminal is too small.
->
-> ###### HINT: Follow me on [Github](https://github.com/NNBnh) so you know when it comes out >,<
+> ## Check out the new [`bfetch`](https://github.com/NNBnh/bfetch)
 >
 > ---
 
